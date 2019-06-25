@@ -23,8 +23,7 @@ PopupButton::PopupButton(Widget *parent, const std::string &caption, int buttonI
 
     setFlags(Flags::ToggleButton | Flags::PopupButton);
 
-    Window *parentWindow = window();
-    mPopup = new Popup(parentWindow->parent(), window());
+    mPopup = new Popup(window()->parent(), window());
     mPopup->setSize(Vector2i(320, 250));
     mPopup->setVisible(false);
 
@@ -71,11 +70,9 @@ void PopupButton::draw(NVGcontext* ctx) {
 void PopupButton::performLayout(NVGcontext *ctx) {
     Widget::performLayout(ctx);
 
-    const Window *parentWindow = window();
-
-    int posY = absolutePosition().y() - parentWindow->position().y() + mSize.y() /2;
+    int posY = absolutePosition().y() - window()->position().y() + mSize.y() /2;
     if (mPopup->side() == Popup::Right)
-        mPopup->setAnchorPos(Vector2i(parentWindow->width() + 15, posY));
+        mPopup->setAnchorPos(Vector2i((absolutePosition().x() - window()->absolutePosition().x()) + width() + 15, posY));
     else
         mPopup->setAnchorPos(Vector2i(0 - 15, posY));
 }
