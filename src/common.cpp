@@ -9,13 +9,13 @@
     BSD-style license that can be found in the LICENSE.txt file.
 */
 
-#include <nanogui/screen.h>
+#include "screen.h"
 
 #if defined(_WIN32)
 #  include <windows.h>
 #endif
 
-#include <nanogui/opengl.h>
+#include "opengl.h"
 #include <map>
 #include <thread>
 #include <chrono>
@@ -25,6 +25,8 @@
 #  include <locale.h>
 #  include <signal.h>
 #  include <sys/dir.h>
+#else
+#include "mingw-thread.h"
 #endif
 
 NAMESPACE_BEGIN(nanogui)

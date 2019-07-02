@@ -12,12 +12,12 @@
     BSD-style license that can be found in the LICENSE.txt file.
 */
 
-#include <nanogui/window.h>
-#include <nanogui/screen.h>
-#include <nanogui/glcanvas.h>
-#include <nanogui/theme.h>
-#include <nanogui/opengl.h>
-#include <nanogui/serializer/core.h>
+#include "window.h"
+#include "screen.h"
+#include "glcanvas.h"
+#include "theme.h"
+#include "opengl.h"
+#include "serializer/core.h"
 
 NAMESPACE_BEGIN(nanogui)
 

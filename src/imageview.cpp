@@ -11,10 +11,10 @@
     BSD-style license that can be found in the LICENSE.txt file.
 */
 
-#include <nanogui/imageview.h>
-#include <nanogui/window.h>
-#include <nanogui/screen.h>
-#include <nanogui/theme.h>
+#include "imageview.h"
+#include "window.h"
+#include "screen.h"
+#include "theme.h"
 #include <cmath>
 
 NAMESPACE_BEGIN(nanogui)

@@ -11,11 +11,11 @@
     BSD-style license that can be found in the LICENSE.txt file.
 */
 
-#include <nanogui/screen.h>
-#include <nanogui/theme.h>
-#include <nanogui/opengl.h>
-#include <nanogui/window.h>
-#include <nanogui/popup.h>
+#include "screen.h"
+#include "theme.h"
+#include "opengl.h"
+#include "window.h"
+#include "popup.h"
 #include <map>
 #include <iostream>
 
@@ -37,7 +37,7 @@
 
 /* Allow enforcing the GL2 implementation of NanoVG */
 #define NANOVG_GL3_IMPLEMENTATION
-#include <nanovg_gl.h>
+#include <nanovg/nanovg_gl.h>
 
 NAMESPACE_BEGIN(nanogui)
 

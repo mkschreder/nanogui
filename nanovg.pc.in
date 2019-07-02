@@ -1,0 +1,10 @@
+prefix=/usr/local
+exec_prefix=${prefix}
+includedir=${prefix}/include
+libdir=${exec_prefix}/lib
+
+Name: libnanovg
+Description: OpenGL Vector Graphics
+Version: 1.0.0
+Cflags: -I${includedir}/nanovg/
+Libs: -L${libdir} -lnanovg

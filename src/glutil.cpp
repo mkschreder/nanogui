@@ -9,7 +9,7 @@
     BSD-style license that can be found in the LICENSE.txt file.
 */
 
-#include <nanogui/glutil.h>
+#include "glutil.h"
 
 #if defined(WIN32)
 #  if !defined(__clang__)

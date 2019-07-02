@@ -1,0 +1,58 @@
+# The `:;' works around a Bash 3.2 bug when the output is not writeable.
+$(srcdir)/package.m4: $(top_srcdir)/configure.ac
+	:;{ \
+		echo '# Signature of the current package.' && \
+		echo 'm4_define([AT_PACKAGE_NAME],' && \
+		echo '	[$(PACKAGE_NAME)])' && \
+		echo 'm4_define([AT_PACKAGE_TARNAME],' && \
+		echo '	[$(PACKAGE_TARNAME)])' && \
+		echo 'm4_define([AT_PACKAGE_VERSION],' && \
+		echo '	[$(PACKAGE_VERSION)])' && \
+		echo 'm4_define([AT_PACKAGE_STRING],' && \
+		echo '	[$(PACKAGE_STRING)])' && \
+		echo 'm4_define([AT_PACKAGE_BUGREPORT],' && \
+		echo '	[$(PACKAGE_BUGREPORT)])'; \
+		echo 'm4_define([AT_PACKAGE_URL],' && \
+		echo '	[$(PACKAGE_URL)])'; \
+	} >'$(srcdir)/package.m4'
+
+EXTRA_DIST = testsuite.at atlocal.in $(srcdir)/package.m4 $(TESTSUITE) atlocal.in
+TESTSUITE = $(srcdir)/testsuite
+
+check-local: atconfig $(TESTSUITE)
+	$(SHELL) '$(TESTSUITE)' $(TESTSUITEFLAGS)
+
+installcheck-local: atconfig $(TESTSUITE)
+	$(SHELL) '$(TESTSUITE)' AUTOTEST_PATH='$(bindir)' \
+		$(TESTSUITEFLAGS)
+
+clean-local:
+	test ! -f '$(TESTSUITE)' || \
+	$(SHELL) '$(TESTSUITE)' --clean
+
+AUTOTEST = $(AUTOM4TE) --language=autotest
+$(TESTSUITE): $(srcdir)/testsuite.at $(srcdir)/package.m4
+	$(AUTOTEST) -I '$(srcdir)' -o $@.tmp $@.at
+	mv $@.tmp $@
+
+TESTS =
+check_PROGRAMS = $(TESTS)
+
+AM_CFLAGS = \
+	-Wall -Wextra \
+	-g \
+	-I$(top_srcdir)/include\
+	-I$(abs_top_builddir)/include\
+	$(COVERAGE_CFLAGS)
+AM_CXXFLAGS = \
+	-g \
+	-I$(top_srcdir)/include\
+	-I$(abs_top_builddir)/include/\
+	$(COVERAGE_CFLAGS)
+AM_LDFLAGS =\
+	-L$(top_builddir)/src/ \
+	-L$(abs_top_builddir)/lib/ \
+	-Wl,--start-group \
+	$(COVERAGE_LDFLAGS) -lgtest -lgmock -lpthread
+
+AUTOMAKE_OPTIONS = subdir-objects

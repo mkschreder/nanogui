@@ -12,13 +12,13 @@
     BSD-style license that can be found in the LICENSE.txt file.
 */
 
-#include <nanogui/tabwidget.h>
-#include <nanogui/tabheader.h>
-#include <nanogui/stackedwidget.h>
-#include <nanogui/theme.h>
-#include <nanogui/opengl.h>
-#include <nanogui/window.h>
-#include <nanogui/screen.h>
+#include "tabwidget.h"
+#include "tabheader.h"
+#include "stackedwidget.h"
+#include "theme.h"
+#include "opengl.h"
+#include "window.h"
+#include "screen.h"
 #include <algorithm>
 
 NAMESPACE_BEGIN(nanogui)

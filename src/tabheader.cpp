@@ -11,9 +11,9 @@
     BSD-style license that can be found in the LICENSE.txt file.
 */
 
-#include <nanogui/tabheader.h>
-#include <nanogui/theme.h>
-#include <nanogui/opengl.h>
+#include "tabheader.h"
+#include "theme.h"
+#include "opengl.h"
 #include <numeric>
 
 NAMESPACE_BEGIN(nanogui)
