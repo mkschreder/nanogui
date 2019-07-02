@@ -27,7 +27,7 @@ void ProgressBar::draw(NVGcontext* ctx) {
 
     NVGpaint paint = nvgBoxGradient(
         ctx, mPos.x() + 1, mPos.y() + 1,
-        mSize.x()-2, mSize.y(), 3, 4, Color(0, 32), Color(0, 92));
+        mSize.x()-2, mSize.y(), 3, 4, mTheme->mBorderDark, Color(0, 92));
     nvgBeginPath(ctx);
     nvgRoundedRect(ctx, mPos.x(), mPos.y(), mSize.x(), mSize.y(), 3);
     nvgFillPaint(ctx, paint);
@@ -39,7 +39,7 @@ void ProgressBar::draw(NVGcontext* ctx) {
     paint = nvgBoxGradient(
         ctx, mPos.x(), mPos.y(),
         barPos+1.5f, mSize.y()-1, 3, 4,
-        Color(220, 100), Color(128, 100));
+        mTheme->mBorderMedium, Color(128, 100));
 
     nvgBeginPath(ctx);
     nvgRoundedRect(
@@ -47,6 +47,18 @@ void ProgressBar::draw(NVGcontext* ctx) {
         barPos, mSize.y()-2, 3);
     nvgFillPaint(ctx, paint);
     nvgFill(ctx);
+
+	nvgFillColor(ctx, mEnabled ? mTheme->mTextColor : mTheme->mDisabledTextColor);
+	nvgFontSize(ctx, mTheme->mStandardFontSize);
+    nvgFontFace(ctx, "sans-bold");
+
+    nvgTextAlign(ctx, NVG_ALIGN_MIDDLE);
+	float w = nvgTextBounds(ctx, 0, 0, mCaption.c_str(), nullptr, nullptr);
+	float off = (mSize.x() - w) / 2;
+	if(off < 0) off = 0;
+	nvgText(ctx, mPos.x() + off, mPos.y() + mSize.y() / 2,
+                mCaption.c_str(), nullptr);
+
 }
 
 void ProgressBar::save(Serializer &s) const {

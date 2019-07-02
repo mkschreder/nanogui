@@ -86,10 +86,10 @@ void TextBox::draw(NVGcontext* ctx) {
 
     NVGpaint bg = nvgBoxGradient(ctx,
         mPos.x() + 1, mPos.y() + 1 + 1.0f, mSize.x() - 2, mSize.y() - 2,
-        3, 4, Color(255, 32), Color(32, 32));
+        3, 4, mTheme->mBorderDark, Color(32, 32));
     NVGpaint fg1 = nvgBoxGradient(ctx,
         mPos.x() + 1, mPos.y() + 1 + 1.0f, mSize.x() - 2, mSize.y() - 2,
-        3, 4, Color(150, 32), Color(32, 32));
+        3, 4, mTheme->mBorderMedium, Color(32, 32));
     NVGpaint fg2 = nvgBoxGradient(ctx,
         mPos.x() + 1, mPos.y() + 1 + 1.0f, mSize.x() - 2, mSize.y() - 2,
         3, 4, nvgRGBA(255, 0, 0, 100), nvgRGBA(255, 0, 0, 50));
@@ -138,7 +138,7 @@ void TextBox::draw(NVGcontext* ctx) {
         unitWidth += 2;
     } else if (!mUnits.empty()) {
         unitWidth = nvgTextBounds(ctx, 0, 0, mUnits.c_str(), nullptr, nullptr);
-        nvgFillColor(ctx, Color(255, mEnabled ? 64 : 32));
+        nvgFillColor(ctx, mEnabled ? mTheme->mTextColor : mTheme->mDisabledTextColor);
         nvgTextAlign(ctx, NVG_ALIGN_RIGHT | NVG_ALIGN_MIDDLE);
         nvgText(ctx, mPos.x() + mSize.x() - xSpacing, drawPos.y(),
                 mUnits.c_str(), nullptr);

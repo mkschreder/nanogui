@@ -169,7 +169,7 @@ bool Window::mouseDragEvent(const Vector2i &, const Vector2i &rel,
 bool Window::mouseButtonEvent(const Vector2i &p, int button, bool down, int modifiers) {
     if (Widget::mouseButtonEvent(p, button, down, modifiers))
         return true;
-    if (button == GLFW_MOUSE_BUTTON_1) {
+    if (!mTitle.empty() && button == GLFW_MOUSE_BUTTON_1) {
         mDrag = down && (p.y() - mPos.y()) < mTheme->mWindowHeaderHeight;
         return true;
     }

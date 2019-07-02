@@ -141,8 +141,8 @@ void Button::draw(NVGcontext *ctx) {
 
     nvgBeginPath(ctx);
     nvgStrokeWidth(ctx, 1.0f);
-    nvgRoundedRect(ctx, mPos.x() + 0.5f, mPos.y() + (mPushed ? 0.5f : 1.5f), mSize.x() - 1,
-                   mSize.y() - 1 - (mPushed ? 0.0f : 1.0f), mTheme->mButtonCornerRadius);
+    nvgRoundedRect(ctx, mPos.x() + 1, mPos.y() + (mPushed ? 0.5f : 1.f), mSize.x() - 2,
+                   mSize.y() - 2 - (mPushed ? 0.0f : 1.0f), mTheme->mButtonCornerRadius);
     nvgStrokeColor(ctx, mTheme->mBorderLight);
     nvgStroke(ctx);
 

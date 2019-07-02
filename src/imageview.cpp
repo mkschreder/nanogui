@@ -73,6 +73,8 @@ ImageView::ImageView(Widget* parent, GLuint imageID)
     mShader.init("ImageViewShader", defaultImageViewVertexShader,
                  defaultImageViewFragmentShader);
 
+	mBorder = true;
+
     MatrixXu indices(3, 2);
     indices.col(0) << 0, 1, 2;
     indices.col(1) << 2, 3, 1;
@@ -287,7 +289,9 @@ void ImageView::draw(NVGcontext* ctx) {
     Widget::draw(ctx);
     nvgEndFrame(ctx); // Flush the NanoVG draw stack, not necessary to call nvgBeginFrame afterwards.
 
-    drawImageBorder(ctx);
+	if(mBorder){
+    	drawImageBorder(ctx);
+	}
 
     // Calculate several variables that need to be send to OpenGL in order for the image to be
     // properly displayed inside the widget.

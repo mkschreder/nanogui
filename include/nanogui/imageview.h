@@ -136,6 +136,7 @@ private:
     // Helper image methods.
     void updateImageParameters();
 
+	void setBorder(bool en){ mBorder = en; }
     // Helper drawing methods.
     void drawWidgetBorder(NVGcontext* ctx) const;
     void drawImageBorder(NVGcontext* ctx) const;
@@ -156,6 +157,7 @@ private:
     Vector2f mOffset;
     bool mFixedScale;
     bool mFixedOffset;
+	bool mBorder;
 
     // Fine-tuning parameters.
     float mZoomSensitivity = 1.1f;

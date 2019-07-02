@@ -27,7 +27,7 @@ public:
 
     float value() { return mValue; }
     void setValue(float value) { mValue = value; }
-
+	void setCaption(const std::string &cap) { mCaption = cap; }
     virtual Vector2i preferredSize(NVGcontext *ctx) const override;
     virtual void draw(NVGcontext* ctx) override;
 
@@ -35,6 +35,7 @@ public:
     virtual bool load(Serializer &s) override;
 protected:
     float mValue;
+	std::string mCaption;
 public:
     EIGEN_MAKE_ALIGNED_OPERATOR_NEW
 };
