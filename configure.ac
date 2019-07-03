@@ -35,7 +35,7 @@ AM_MISSING_PROG([AUTOM4TE], [autom4te])
 
 AC_CONFIG_FILES([Makefile include/Makefile src/Makefile])
 AC_CONFIG_FILES([tests/atlocal])
-AC_CONFIG_FILES([nanovg.pc])
+AC_CONFIG_FILES([nanogui.pc])
 
 AC_OUTPUT
 

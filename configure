@@ -5204,7 +5204,7 @@ ac_config_files="$ac_config_files Makefile include/Makefile src/Makefile"
 
 ac_config_files="$ac_config_files tests/atlocal"
 
-ac_config_files="$ac_config_files nanovg.pc"
+ac_config_files="$ac_config_files nanogui.pc"
 
 
 cat >confcache <<\_ACEOF
@@ -5953,7 +5953,7 @@ do
     "include/Makefile") CONFIG_FILES="$CONFIG_FILES include/Makefile" ;;
     "src/Makefile") CONFIG_FILES="$CONFIG_FILES src/Makefile" ;;
     "tests/atlocal") CONFIG_FILES="$CONFIG_FILES tests/atlocal" ;;
-    "nanovg.pc") CONFIG_FILES="$CONFIG_FILES nanovg.pc" ;;
+    "nanogui.pc") CONFIG_FILES="$CONFIG_FILES nanogui.pc" ;;
 
   *) as_fn_error $? "invalid argument: \`$ac_config_target'" "$LINENO" 5;;
   esac
